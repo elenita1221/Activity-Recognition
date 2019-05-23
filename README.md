@@ -1,1 +1,1 @@
-# Activity-Recognition
+# Activity-Recognition from accelerometer data
