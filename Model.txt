@@ -1,0 +1,42 @@
+Each one of the 300 accelerometer recordings corresponding to a user will be represented as a list, by using the defined function get_accel(user_id, accel_id, folder), where user_id is an integer from 1 to 10, accel_id is an integer from 1 to 300, folder can be either 'train' or 'test'.
+
+The user recognition problem is formulated as a classification problem with 10 classes corresponding to the 10 users respectively. For each user with id from 1 to 10, we tried one-versus-all Gradient Boosting Classifier and Random Forest Classifier.
+
+Training:
+For each user, take his 200 accelerometer recordings from the 'train' folder and label them as 1s. In order to avoid an imbalanced training set, we must take 200 accelerometer recordings from the other nine users and label them as 0s. The function get_accels(user_id, folder)  returns a list, where each element is one of the 200 accelerometer recordings from the 'train' folder. 
+
+From each one of remaining nine users, we randomly sample 23 accelerometer recordings with ids between 1 and 200, obtaining a total of 23x9=207 samples, of which the last 7 will be dropped later in the function get_data(user_id). 
+ 
+Testing:
+From the 'test' folder, take from each user his 100 accelerometer recordings which will be labeled with 1s.
+In a similar manner with the training phase, we randomly sample 12 accelerometer recordings with ids between 201 and 300 from each one of the remaining 9 users, obtaining a total of 12x9=108 samples, of which the last 8 will be dropped later.
+The metric used for testing is Area under the Curve(AUC).
+
+Feature extraction:
+For timeseries data, small (overlapping) windows of time are taken and compute various metrics - min, max, variance, mean, standard deviation,skew,kurtosis,mean crossing rate - and use those as features to a classifier.
+The defined function window_summary returns all these metrics.
+Then the function build_features(accel) returns the features vector for a specific accelerometer recording, where accel is an accelerometer recording given by get_accel(user_id,accel_id, folder).
+
+AUC scores in percent form for each user from 1 to 10 obtained with GradientBoostingClassifier with 500 trees:
+98.0 %  
+99.94 %
+98.15 %
+95.6 %
+95.11 %
+97.48 %
+63.24999999999999 %
+99.56 %
+93.535 %
+94.405 %
+  
+AUC scores obtained using RandomForestClassifier with 500 trees:
+100.0 %
+100.0 %
+99.595 %
+96.33999999999999 %
+98.88 %
+99.53 %
+99.53999999999999 %
+99.3 %
+95.54 %
+98.91 %
