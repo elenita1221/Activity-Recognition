@@ -1,3 +1,4 @@
+User Recognition from accelerometer data
 The task is to discriminate between 10 mobile device users. For each user, there are 300 accelerometer signal recordings of 1.5 seconds in length. The accelerometer signal is recorded at 100 Hz, thus containing 150 values. The values are recorded on three different axes: x, y, z. Each example is provided in a .csv file with the following format:
 
 timestamp,x-value,y-value,z-value
