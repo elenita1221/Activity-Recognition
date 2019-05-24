@@ -8,8 +8,3 @@ timestamp,x-value,y-value,z-value
 1399425144576,-0.527323,6.221333,6.872556
 
 The provided data set is divided into a training set (200 examples per user) and a test set (100 examples per user). The goal is to train a machine learning model on the training set and apply the model on the test set.
-
-We require you to provide:
-- the python script for training and evaluating your model;
-- the accuracy rate reported on the test set;
-- a brief description of the proposed model.
